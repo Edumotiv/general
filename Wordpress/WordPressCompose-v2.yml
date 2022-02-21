@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  littlemark-db:
+    image: mariadb
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=sdfjoiezu73
+    volumes:
+      - littlemark-db-data:/var/log/mysql
+  littlemark-wp:
+    image: wordpress
+    restart: always
+    depends_on:
+       - littlemark-db
+    environment:
+      - WORDPRESS_DB_HOST=littlemark-db
+      - WORDPRESS_DB_PASSWORD=sdfjoiezu73
+    volumes:
+      - littlemark-wp-data:/var/www/html
+      #- /home/ec2-user/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    ports:
+      - 8095:80
+volumes:
+   littlemark-db-data:
+      driver: local
+   littlemark-wp-data:
+      driver: local

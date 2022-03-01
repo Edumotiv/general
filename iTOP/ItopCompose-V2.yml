@@ -4,10 +4,9 @@ services:
 
   itop-app:
     container_name: itop-app
-    image: vbkunin/itop:latest
+    image: vbkunin/itop:2.7.0
     depends_on:
-      - itop-db
-    tty: true         # to have nice debug(...) outputs
+      - itop-db         # to have nice debug(...) outputs
     stdin_open: true  # to be able to use CTRL+C to stop the debug
     ports:
       - 8080:80
@@ -15,7 +14,7 @@ services:
 
   itop-db:
     container_name: itop-db
-    image: mysql:5
+    image: mysql:5.7
     environment:
       MYSQL_DATABASE: "itop"
       MYSQL_USER: "itop"

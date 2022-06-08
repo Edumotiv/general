@@ -4,7 +4,7 @@ services:
 
   itop-app:
     container_name: itop-app
-    image: vbkunin/itop:2.7.0
+    image: vbkunin/itop:latest-base
     depends_on:
       - itop-db         # to have nice debug(...) outputs
     stdin_open: true  # to be able to use CTRL+C to stop the debug
